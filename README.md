@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-2.0-orange.svg)]()
+[![Version](https://img.shields.io/badge/Version-2.1-orange.svg)]()
 
 A collection of Python scripts for analyzing and converting SQLite databases, specifically `state.vscdb` files from Cursor/VS Code applications.
 
@@ -17,15 +17,19 @@ A collection of Python scripts for analyzing and converting SQLite databases, sp
 
 ```
 analyzer/
-├── 📄 advanced_analyzer.py          # Advanced keyword analysis with structured output
-├── 📄 cursor_analyzer.py            # Specialized "cursor" keyword analysis
-├── 📄 keyword_analyzer_optimized.py # High-performance keyword analysis
-├── 📄 keyword_analyzer.py           # Basic keyword analysis
-├── 📄 state_vscdb_converter.py      # Complete database conversion to readable format
-├── 📄 test_syntax.py                # Syntax testing for scripts
-├── 📁 analysis_output_*/            # Analysis output folders
-├── 📁 state_converted_*/            # Database conversion output folders
-└── 📁 output_old/                   # Old outputs
+├── 📄 advanced_analyzer.py                    # Advanced keyword analysis with structured output
+├── 📄 cursor_analyzer.py                      # Specialized "cursor" keyword analysis
+├── 📄 keyword_analyzer_optimized.py           # High-performance keyword analysis
+├── 📄 keyword_analyzer.py                     # Basic keyword analysis
+├── 📄 state_vscdb_converter.py                # Complete database conversion to readable format
+├── 📄 comprehensive_dictionary_analyzer.py    # Comprehensive dictionary analysis with alphabet categorization
+├── 📄 comprehensive_dictionary_analyzer_max.py # Dictionary analysis MAX version (unlimited results)
+├── 📄 flexible_keyword_analyzer.py            # Flexible keyword search for any custom keywords
+├── 📄 test_syntax.py                          # Syntax testing for scripts
+├── 📁 analysis_output_*/                      # Analysis output folders
+├── 📁 state_converted_*/                      # Database conversion output folders
+├── 📁 dictionary_analysis*/                   # Dictionary analysis output folders
+└── 📁 output_old/                             # Old outputs
 ```
 
 ## 🚀 Script Overview
@@ -232,7 +236,166 @@ state_converted_YYYYMMDD_HHMMSS/
 
 ---
 
-### 6. **test_syntax.py** - Syntax Testing
+### 6. **comprehensive_dictionary_analyzer.py** - Comprehensive Dictionary Analysis
+
+**Key Features:**
+
+- Complete dictionary analysis with alphabet categorization (A-Z)
+- Word and phrase extraction with frequency counting
+- Multiple output formats: JSON, CSV, TXT
+- HTML navigation report for easy browsing
+- Filtering of common words and noise
+- Statistical analysis and reporting
+
+**Analysis Categories:**
+
+- 📝 **Words**: Individual words (3+ characters) organized by first letter
+- 📄 **Phrases**: Multi-word phrases (10-50 characters) organized by first letter
+- 📊 **Statistics**: Frequency analysis and general statistics
+- 🌐 **Reports**: HTML navigation and analysis reports
+
+**Usage:**
+
+```bash
+# Default analysis
+python comprehensive_dictionary_analyzer.py
+
+# With custom database path
+python comprehensive_dictionary_analyzer.py /path/to/state.vscdb
+
+# With custom output directory
+python comprehensive_dictionary_analyzer.py --output-dir "my_dictionary"
+```
+
+**Output:**
+
+```
+dictionary_analysis_YYYYMMDD_HHMMSS/
+├── 📁 A/
+│   ├── 📁 words/
+│   │   ├── 📄 A_words.json
+│   │   ├── 📄 A_words.csv
+│   │   └── 📄 A_words.txt
+│   └── 📁 phrases/
+│       ├── 📄 A_phrases.json
+│       ├── 📄 A_phrases.csv
+│       └── 📄 A_phrases.txt
+├── 📁 B/
+├── 📁 C/
+├── ...
+├── 📁 Z/
+├── 📁 statistics/
+│   ├── 📄 general_statistics.json
+│   └── 📄 analysis_report.txt
+└── 📁 reports/
+    └── 📄 dictionary_navigation.html
+```
+
+---
+
+### 7. **comprehensive_dictionary_analyzer_max.py** - Dictionary Analysis MAX Version
+
+**Key Features:**
+
+- Unlimited results display (no truncation)
+- Complete dictionary analysis with all data
+- Same features as comprehensive_dictionary_analyzer.py but without limits
+- Memory-optimized for large datasets
+- Full word and phrase extraction
+
+**Key Differences from Standard Version:**
+
+- ✅ **Unlimited Results**: Shows all found words and phrases
+- ✅ **Complete Data**: No truncation or limiting
+- ✅ **Memory Optimized**: Handles very large datasets
+- ✅ **Full Statistics**: Complete frequency analysis
+
+**Usage:**
+
+```bash
+# Full analysis without limits
+python comprehensive_dictionary_analyzer_max.py
+
+# With custom database path
+python comprehensive_dictionary_analyzer_max.py /path/to/state.vscdb
+
+# With custom output directory
+python comprehensive_dictionary_analyzer_max.py --output-dir "dictionary_max"
+```
+
+**Output:**
+
+```
+dictionary_analysis_max_YYYYMMDD_HHMMSS/
+├── 📁 A/
+│   ├── 📁 words/
+│   │   ├── 📄 A_words.json (complete data)
+│   │   ├── 📄 A_words.csv (complete data)
+│   │   └── 📄 A_words.txt (complete data)
+│   └── 📁 phrases/
+│       ├── 📄 A_phrases.json (complete data)
+│       ├── 📄 A_phrases.csv (complete data)
+│       └── 📄 A_phrases.txt (complete data)
+├── 📁 B/
+├── 📁 C/
+├── ...
+├── 📁 Z/
+├── 📁 statistics/
+│   ├── 📄 general_statistics.json
+│   └── 📄 analysis_report.txt
+└── 📁 reports/
+    └── 📄 dictionary_navigation.html
+```
+
+---
+
+### 8. **flexible_keyword_analyzer.py** - Flexible Keyword Search
+
+**Key Features:**
+
+- Search for any custom keywords or phrases
+- Interactive keyword input
+- Flexible search patterns (exact match, contains, regex)
+- Multiple output formats
+- Real-time search results
+- Customizable result limits
+
+**Search Modes:**
+
+- 🔍 **Exact Match**: Find exact keyword matches
+- 📝 **Contains**: Find text containing keywords
+- 🎯 **Regex**: Use regular expressions for complex patterns
+- 🔄 **Multiple Keywords**: Search for multiple keywords simultaneously
+
+**Usage:**
+
+```bash
+# Interactive mode (prompts for keywords)
+python flexible_keyword_analyzer.py
+
+# Direct keyword search
+python flexible_keyword_analyzer.py --keywords "token,password,api"
+
+# With custom database path
+python flexible_keyword_analyzer.py /path/to/state.vscdb --keywords "cursor,editor"
+
+# With result limit
+python flexible_keyword_analyzer.py --keywords "auth" --max-results 500
+
+# With custom output file
+python flexible_keyword_analyzer.py --keywords "subscription" --output "subscription_results.json"
+```
+
+**Output:**
+
+- JSON file with complete search results
+- Console summary with match statistics
+- Detailed match information with context
+- Table-by-table breakdown of results
+
+---
+
+### 9. **test_syntax.py** - Syntax Testing
 
 **Key Features:**
 
@@ -330,6 +493,12 @@ python cursor_analyzer.py
 
 # Interactive keyword analysis
 python keyword_analyzer.py
+
+# Comprehensive dictionary analysis
+python comprehensive_dictionary_analyzer.py
+
+# Flexible keyword search
+python flexible_keyword_analyzer.py
 ```
 
 ### 🎯 **Recommended Workflow:**
@@ -526,7 +695,18 @@ git push origin feature/new-analyzer
 
 ## 📈 Changelog
 
-### Version 2.0 (Current)
+### Version 2.1 (Current)
+
+- ✅ **NEW:** Comprehensive dictionary analyzer (`comprehensive_dictionary_analyzer.py`)
+- ✅ **NEW:** Dictionary analyzer MAX version (`comprehensive_dictionary_analyzer_max.py`)
+- ✅ **NEW:** Flexible keyword analyzer (`flexible_keyword_analyzer.py`)
+- ✅ **NEW:** Alphabet-based categorization (A-Z)
+- ✅ **NEW:** Multiple output formats (JSON, CSV, TXT, HTML)
+- ✅ **NEW:** Interactive keyword search
+- ✅ **IMPROVED:** Enhanced analysis capabilities
+- ✅ **IMPROVED:** Better organization and navigation
+
+### Version 2.0
 
 - ✅ **NEW:** Complete database converter (`state_vscdb_converter.py`)
 - ✅ **NEW:** HTML reports with navigation

@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-2.0-orange.svg)]()
+[![Version](https://img.shields.io/badge/Version-2.1-orange.svg)]()
 
 Koleksi script Python untuk menganalisis dan mengkonversi database SQLite, khususnya file `state.vscdb` dari aplikasi Cursor/VS Code.
 
@@ -17,15 +17,19 @@ Koleksi script Python untuk menganalisis dan mengkonversi database SQLite, khusu
 
 ```
 analyzer/
-├── 📄 advanced_analyzer.py          # Analisis kata kunci advanced dengan output terstruktur
-├── 📄 cursor_analyzer.py            # Analisis khusus kata kunci "cursor"
-├── 📄 keyword_analyzer_optimized.py # Analisis kata kunci dengan performa tinggi
-├── 📄 keyword_analyzer.py           # Analisis kata kunci dasar
-├── 📄 state_vscdb_converter.py      # Konversi database lengkap ke format readable
-├── 📄 test_syntax.py                # Test syntax untuk script
-├── 📁 analysis_output_*/            # Output folder analisis
-├── 📁 state_converted_*/            # Output folder konversi database
-└── 📁 output_old/                   # Output lama
+├── 📄 advanced_analyzer.py                    # Analisis kata kunci advanced dengan output terstruktur
+├── 📄 cursor_analyzer.py                      # Analisis khusus kata kunci "cursor"
+├── 📄 keyword_analyzer_optimized.py           # Analisis kata kunci dengan performa tinggi
+├── 📄 keyword_analyzer.py                     # Analisis kata kunci dasar
+├── 📄 state_vscdb_converter.py                # Konversi database lengkap ke format readable
+├── 📄 comprehensive_dictionary_analyzer.py    # Analisis dictionary komprehensif dengan kategorisasi alfabet
+├── 📄 comprehensive_dictionary_analyzer_max.py # Analisis dictionary versi MAX (hasil unlimited)
+├── 📄 flexible_keyword_analyzer.py            # Pencarian kata kunci fleksibel untuk kata kunci custom apapun
+├── 📄 test_syntax.py                          # Test syntax untuk script
+├── 📁 analysis_output_*/                      # Output folder analisis
+├── 📁 state_converted_*/                      # Output folder konversi database
+├── 📁 dictionary_analysis*/                   # Output folder analisis dictionary
+└── 📁 output_old/                             # Output lama
 ```
 
 ## 🚀 Script Overview
@@ -232,7 +236,166 @@ state_converted_YYYYMMDD_HHMMSS/
 
 ---
 
-### 6. **test_syntax.py** - Test Syntax
+### 6. **comprehensive_dictionary_analyzer.py** - Analisis Dictionary Komprehensif
+
+**Fitur Utama:**
+
+- Analisis dictionary lengkap dengan kategorisasi alfabet (A-Z)
+- Ekstraksi kata dan frasa dengan penghitungan frekuensi
+- Multiple format output: JSON, CSV, TXT
+- Laporan navigasi HTML untuk browsing mudah
+- Filtering kata-kata umum dan noise
+- Analisis statistik dan pelaporan
+
+**Kategori Analisis:**
+
+- 📝 **Words**: Kata individual (3+ karakter) diorganisir berdasarkan huruf pertama
+- 📄 **Phrases**: Frasa multi-kata (10-50 karakter) diorganisir berdasarkan huruf pertama
+- 📊 **Statistics**: Analisis frekuensi dan statistik umum
+- 🌐 **Reports**: Navigasi HTML dan laporan analisis
+
+**Cara Penggunaan:**
+
+```bash
+# Analisis default
+python comprehensive_dictionary_analyzer.py
+
+# Dengan path database custom
+python comprehensive_dictionary_analyzer.py /path/to/state.vscdb
+
+# Dengan direktori output custom
+python comprehensive_dictionary_analyzer.py --output-dir "my_dictionary"
+```
+
+**Output:**
+
+```
+dictionary_analysis_YYYYMMDD_HHMMSS/
+├── 📁 A/
+│   ├── 📁 words/
+│   │   ├── 📄 A_words.json
+│   │   ├── 📄 A_words.csv
+│   │   └── 📄 A_words.txt
+│   └── 📁 phrases/
+│       ├── 📄 A_phrases.json
+│       ├── 📄 A_phrases.csv
+│       └── 📄 A_phrases.txt
+├── 📁 B/
+├── 📁 C/
+├── ...
+├── 📁 Z/
+├── 📁 statistics/
+│   ├── 📄 general_statistics.json
+│   └── 📄 analysis_report.txt
+└── 📁 reports/
+    └── 📄 dictionary_navigation.html
+```
+
+---
+
+### 7. **comprehensive_dictionary_analyzer_max.py** - Analisis Dictionary Versi MAX
+
+**Fitur Utama:**
+
+- Tampilan hasil unlimited (tanpa truncation)
+- Analisis dictionary lengkap dengan semua data
+- Fitur sama dengan comprehensive_dictionary_analyzer.py tapi tanpa batasan
+- Memory-optimized untuk dataset besar
+- Ekstraksi kata dan frasa lengkap
+
+**Perbedaan Utama dari Versi Standard:**
+
+- ✅ **Hasil Unlimited**: Menampilkan semua kata dan frasa yang ditemukan
+- ✅ **Data Lengkap**: Tanpa truncation atau pembatasan
+- ✅ **Memory Optimized**: Menangani dataset sangat besar
+- ✅ **Statistik Lengkap**: Analisis frekuensi komprehensif
+
+**Cara Penggunaan:**
+
+```bash
+# Analisis lengkap tanpa batasan
+python comprehensive_dictionary_analyzer_max.py
+
+# Dengan path database custom
+python comprehensive_dictionary_analyzer_max.py /path/to/state.vscdb
+
+# Dengan direktori output custom
+python comprehensive_dictionary_analyzer_max.py --output-dir "dictionary_max"
+```
+
+**Output:**
+
+```
+dictionary_analysis_max_YYYYMMDD_HHMMSS/
+├── 📁 A/
+│   ├── 📁 words/
+│   │   ├── 📄 A_words.json (data lengkap)
+│   │   ├── 📄 A_words.csv (data lengkap)
+│   │   └── 📄 A_words.txt (data lengkap)
+│   └── 📁 phrases/
+│       ├── 📄 A_phrases.json (data lengkap)
+│       ├── 📄 A_phrases.csv (data lengkap)
+│       └── 📄 A_phrases.txt (data lengkap)
+├── 📁 B/
+├── 📁 C/
+├── ...
+├── 📁 Z/
+├── 📁 statistics/
+│   ├── 📄 general_statistics.json
+│   └── 📄 analysis_report.txt
+└── 📁 reports/
+    └── 📄 dictionary_navigation.html
+```
+
+---
+
+### 8. **flexible_keyword_analyzer.py** - Pencarian Kata Kunci Fleksibel
+
+**Fitur Utama:**
+
+- Pencarian kata kunci atau frasa custom apapun
+- Input kata kunci interaktif
+- Pattern pencarian fleksibel (exact match, contains, regex)
+- Multiple format output
+- Hasil pencarian real-time
+- Batasan hasil yang dapat dikustomisasi
+
+**Mode Pencarian:**
+
+- 🔍 **Exact Match**: Mencari kecocokan kata kunci exact
+- 📝 **Contains**: Mencari teks yang mengandung kata kunci
+- 🎯 **Regex**: Menggunakan regular expressions untuk pattern kompleks
+- 🔄 **Multiple Keywords**: Mencari multiple kata kunci secara bersamaan
+
+**Cara Penggunaan:**
+
+```bash
+# Mode interaktif (prompt untuk kata kunci)
+python flexible_keyword_analyzer.py
+
+# Pencarian kata kunci langsung
+python flexible_keyword_analyzer.py --keywords "token,password,api"
+
+# Dengan path database custom
+python flexible_keyword_analyzer.py /path/to/state.vscdb --keywords "cursor,editor"
+
+# Dengan batasan hasil
+python flexible_keyword_analyzer.py --keywords "auth" --max-results 500
+
+# Dengan file output custom
+python flexible_keyword_analyzer.py --keywords "subscription" --output "subscription_results.json"
+```
+
+**Output:**
+
+- File JSON dengan hasil pencarian lengkap
+- Ringkasan console dengan statistik match
+- Informasi match detail dengan konteks
+- Breakdown hasil per tabel
+
+---
+
+### 9. **test_syntax.py** - Test Syntax
 
 **Fitur Utama:**
 
@@ -297,6 +460,12 @@ python cursor_analyzer.py
 
 # Untuk analisis kata kunci dengan mode interaktif
 python keyword_analyzer.py
+
+# Untuk analisis dictionary komprehensif
+python comprehensive_dictionary_analyzer.py
+
+# Untuk pencarian kata kunci fleksibel
+python flexible_keyword_analyzer.py
 ```
 
 ## 🔒 Keamanan Data
@@ -404,6 +573,28 @@ python keyword_analyzer_optimized.py --batch-size=500
 📁 Output tersimpan di: analysis_output_20250902_042747
 🌐 Buka laporan HTML: analysis_output_20250902_042747/reports/detailed_report.html
 ```
+
+## 📈 Changelog
+
+### Versi 2.1 (Current)
+
+- ✅ **BARU:** Comprehensive dictionary analyzer (`comprehensive_dictionary_analyzer.py`)
+- ✅ **BARU:** Dictionary analyzer versi MAX (`comprehensive_dictionary_analyzer_max.py`)
+- ✅ **BARU:** Flexible keyword analyzer (`flexible_keyword_analyzer.py`)
+- ✅ **BARU:** Kategorisasi berbasis alfabet (A-Z)
+- ✅ **BARU:** Multiple format output (JSON, CSV, TXT, HTML)
+- ✅ **BARU:** Pencarian kata kunci interaktif
+- ✅ **DIPERBAIKI:** Kemampuan analisis yang ditingkatkan
+- ✅ **DIPERBAIKI:** Organisasi dan navigasi yang lebih baik
+
+### Versi 2.0
+
+- ✅ **BARU:** Complete database converter (`state_vscdb_converter.py`)
+- ✅ **BARU:** Laporan HTML dengan navigasi
+- ✅ **BARU:** Fitur keamanan advanced
+- ✅ **BARU:** Optimasi performa
+- ✅ **DIPERBAIKI:** Error handling dan feedback pengguna
+- ✅ **DIPERBAIKI:** Struktur output dan organisasi
 
 ## 🤝 Kontribusi
 
