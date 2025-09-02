@@ -714,7 +714,7 @@ cd analyzer
 python advanced_analyzer.py --quick
 ```
 
-**Need help?** Check the [troubleshooting section](#-troubleshooting) or open an issue.
+**Need help?** Check the [troubleshooting section](https://github.com/fajarkurnia0388/analyzer_cursor_db/issues) or open an issue.
 
 ---
 
